@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    <!-- 包扫描路径,实现注解驱动Bean的解析与注入 -->
+    <context:component-scan base-package="com.zwy.springmvc">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <bean class="com.zwy.springmvc.config.PropertiesUtil">
+        <!--         加载properties配置文件 -->
+        <property name="locations">
+            <list>
+                <value>classpath:application-dev.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- 注解使用的前置配置 -->
+    <mvc:annotation-driven />
+    <context:property-placeholder location="classpath:application.properties" order="4" ignore-unresolvable="true"/>
+    <context:property-placeholder location="classpath:application-dev.properties" order="4" ignore-unresolvable="true"/>
+    <context:property-placeholder location="classpath:application-prod.properties" order="4" ignore-unresolvable="true"/>
+    <!--指定视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!-- 视图的路径 -->
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <!-- 视图名称后缀  -->
+        <property name="suffix" value=".jsp"/>
+    </bean>
+</beans>
