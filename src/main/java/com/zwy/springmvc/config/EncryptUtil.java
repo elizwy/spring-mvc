@@ -1,24 +1,16 @@
 package com.zwy.springmvc.config;
 
-import javax.crypto.*;
-import javax.crypto.spec.SecretKeySpec;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
+import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
+import java.security.Key;
+import java.security.SecureRandom;
 
 public class EncryptUtil {
-    /*
-     * DES 加密
-     */
-    public static String encrypt(String data, String key) throws Exception {
 
-            SecretKey secretKey = new SecretKeySpec(key.getBytes(), "DES");
-            Cipher cipher = null;
-            cipher = Cipher.getInstance("DES");
-            cipher.init(Cipher.ENCRYPT_MODE, secretKey);
-            byte[] cipherBytes = cipher.doFinal(data.getBytes());
 
-        return byte2HexStr(cipherBytes);
-    }
+
+
+
 
     private static String byte2HexStr(byte[] b) {
         String stmp = "";
@@ -29,18 +21,27 @@ public class EncryptUtil {
         }
         return sb.toString().trim();
     }
-
-
-    /*
-     * DES 解密
+    /**将16进制转换为二进制
+     * @param hexStr
+     * @return
      */
-    public static String decrypt(String data,String key)  throws Exception{
-        SecretKey secretKey = new SecretKeySpec(key.getBytes(), "DES");
-        Cipher cipher = Cipher.getInstance("DES");
-        cipher.init(Cipher.DECRYPT_MODE, secretKey);
-        byte[] plainBytes = cipher.doFinal(data.getBytes());
-
-        return byte2HexStr(plainBytes);
+    public static byte[] parseHexStr2Byte(String hexStr) {
+        if (hexStr.length() < 1)
+            return null;
+        byte[] result = new byte[hexStr.length()/2];
+        for (int i = 0;i< hexStr.length()/2; i++) {
+            int high = Integer.parseInt(hexStr.substring(i*2, i*2+1), 16);
+            int low = Integer.parseInt(hexStr.substring(i*2+1, i*2+2), 16);
+            result[i] = (byte) (high * 16 + low);
+        }
+        return result;
     }
 
+    public static String encrypt(String s, String key) {
+        return s+"encrpt";
+    }
+
+    public static String decrypt(String value, String key) {
+        return value+"decrypt";
+    }
 }

@@ -2,6 +2,9 @@ package com.zwy.springmvc.config;
 
 import java.util.Scanner;
 
+/**
+ * 独立化加密工具，加密后可去除
+ */
 public class PropertiesEncrypt {
     private static final String KEY="G0CvDz7oJn6";
     private static final String START_FILED ="ENC(" ;
@@ -13,12 +16,7 @@ public class PropertiesEncrypt {
             if(split[1].startsWith("ENC(")){
                 continue;
             }
-            String encryptString = null;
-            try {
-                encryptString = EncryptUtil.encrypt(split[1],KEY);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            String encryptString = EncryptUtil.encrypt(split[1],KEY);
             System.out.println(split[0]+"="+START_FILED+encryptString+END_FILED);
         }
     }

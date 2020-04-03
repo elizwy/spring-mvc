@@ -11,7 +11,7 @@
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
-    <bean class="com.zwy.springmvc.config.PropertiesUtil">
+    <bean class="com.zwy.springmvc.config.PropertiesDecrypt">
         <!--         加载properties配置文件 -->
         <property name="locations">
             <list>
