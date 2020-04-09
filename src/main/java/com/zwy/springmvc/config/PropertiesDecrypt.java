@@ -21,11 +21,17 @@ public class PropertiesDecrypt extends PropertySourcesPlaceholderConfigurer {
             if (StringUtils.isBlank(value)) {
                 continue;
             }
-            if (value.startsWith(START_FILED)) {
-                value=value.replaceFirst(START_FILED,"");
+            if (value.startsWith(START_FILED) && value.endsWith(END_FILED)) {
+                value=removeTag(value);
                 props.setProperty(keyStr, decryptString(value)); // 设置解密后的明文数据
             }
         }
+
+    }
+
+    private String removeTag(String value) {
+        String replaceValue=value.replaceFirst(START_FILED,"");
+        return replaceValue.substring(0,replaceValue.length()-1);
     }
 
     private String decryptString(String value){

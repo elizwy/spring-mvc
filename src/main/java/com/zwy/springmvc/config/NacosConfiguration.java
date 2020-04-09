@@ -6,7 +6,7 @@ import com.alibaba.nacos.spring.context.annotation.config.NacosPropertySource;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@EnableNacosConfig(globalProperties = @NacosProperties(serverAddr = "192.168.152.13:8848"))
+@EnableNacosConfig
 @NacosPropertySource(groupId = "spring-demo",dataId = "mysql", autoRefreshed = true)
 public class NacosConfiguration {
 

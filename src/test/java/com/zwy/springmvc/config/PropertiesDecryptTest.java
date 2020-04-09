@@ -56,4 +56,10 @@ public class PropertiesDecryptTest {
         assertEquals("ENC(ZWY",properties.getProperty("name"));
     }
 
+    @Test
+    public void getPorperties(){
+        String namespace = System.getProperty("namespace");
+        System.out.println(namespace);
+    }
+
 }

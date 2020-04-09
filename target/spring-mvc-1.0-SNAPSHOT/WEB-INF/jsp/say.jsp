@@ -13,6 +13,8 @@
 <body>
     url: ${url} <br/>
     name: ${name} <br/>
-    password: ${password}
+    password: ${password} <br/>
+    nestName: ${nestName} <br/>
+    nestPassword: ${nestPassword}
 </body>
 </html>

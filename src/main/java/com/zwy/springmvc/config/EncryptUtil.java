@@ -6,12 +6,6 @@ import java.security.Key;
 import java.security.SecureRandom;
 
 public class EncryptUtil {
-
-
-
-
-
-
     private static String byte2HexStr(byte[] b) {
         String stmp = "";
         StringBuilder sb = new StringBuilder("");

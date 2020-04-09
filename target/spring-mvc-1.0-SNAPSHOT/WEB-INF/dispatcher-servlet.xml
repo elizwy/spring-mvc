@@ -11,7 +11,7 @@
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
-    <bean class="com.zwy.springmvc.config.PropertiesUtil">
+    <bean class="com.zwy.springmvc.config.PropertiesDecrypt">
         <!--         加载properties配置文件 -->
         <property name="locations">
             <list>
@@ -19,12 +19,16 @@
             </list>
         </property>
     </bean>
+    <bean id="test" class="com.zwy.springmvc.NestNameClass">
+        <property name="nestConfigName" value="${mysql.name}"/>
+        <property name="nestPassword" value="${mysql.password}"/>
+    </bean>
 
-    <!-- 注解使用的前置配置 -->
+<!--    &lt;!&ndash; 注解使用的前置配置 &ndash;&gt;-->
     <mvc:annotation-driven />
     <context:property-placeholder location="classpath:application.properties" order="4" ignore-unresolvable="true"/>
-    <context:property-placeholder location="classpath:application-dev.properties" order="4" ignore-unresolvable="true"/>
-    <context:property-placeholder location="classpath:application-prod.properties" order="4" ignore-unresolvable="true"/>
+<!--    <context:property-placeholder location="classpath:application-dev.properties" order="4" ignore-unresolvable="true"/>-->
+<!--    <context:property-placeholder location="classpath:application-prod.properties" order="4" ignore-unresolvable="true"/>-->
     <!--指定视图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <!-- 视图的路径 -->
