@@ -19,10 +19,10 @@
             </list>
         </property>
     </bean>
-    <bean id="test" class="com.zwy.springmvc.NestNameClass">
-        <property name="nestConfigName" value="${mysql.name}"/>
-        <property name="nestPassword" value="${mysql.password}"/>
-    </bean>
+<!--    <bean id="test" class="com.zwy.springmvc.NestNameClass">-->
+<!--        <property name="nestConfigName" value="${mysql.name}"/>-->
+<!--        <property name="nestPassword" value="${mysql.password}"/>-->
+<!--    </bean>-->
 
 <!--    &lt;!&ndash; 注解使用的前置配置 &ndash;&gt;-->
     <mvc:annotation-driven />
@@ -36,4 +36,5 @@
         <!-- 视图名称后缀  -->
         <property name="suffix" value=".jsp"/>
     </bean>
+
 </beans>

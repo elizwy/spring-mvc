@@ -1,5 +1,8 @@
 package com.zwy.springmvc;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class NestNameClass {
     private String nestConfigName;
     private String nestPassword;
